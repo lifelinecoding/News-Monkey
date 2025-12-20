@@ -1,14 +1,14 @@
-import './App.css';
-import React, { Component } from 'react'
-import Navbar from './Components/Navbar';
+import "./App.css";
+import React, { Component } from "react";
+import News from "./Components/News";
 
- export class App extends Component {
+export class App extends Component {
   render() {
     return (
       <>
-      <Navbar title="NewsMonkey"/>
+        <News />
       </>
-    )
+    );
   }
 }
 
