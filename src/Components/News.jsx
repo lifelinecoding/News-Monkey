@@ -2,47 +2,49 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 
 export class News extends Component {
-
-  constructor() {
-    super();
+  
+  constructor(props){
+    super(props);
     this.state = {
       articles: [],
       loading: false,
-      api_key: "https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=1&pageSize=23",
+      api_key: `https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=1&pageSize=${this.props.pageSize}`,
       page: 1,
+      totalResponse: 0
     };
   }
 
   componentDidMount = async() => {
     const response = await fetch(this.state.api_key);
     const data = await response.json();
-    this.setState({ articles: data.articles });
+    this.setState({ articles: data.articles, loading:false, totalResponse: data.totalResults });
   }
 
   handleNextClick = async() => {
     const nextPage = this.state.page + 1;
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${nextPage}&pageSize=23`);
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${nextPage}&pageSize=${this.props.pageSize}`);
     const data = await response.json();
     this.setState({
       articles: data.articles,
       page: nextPage
     });
-  }
+  };
 
   handlePrevClick = async() => {
     const prevPage = this.state.page - 1;
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${prevPage}&pageSize=23`);
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${prevPage}&pageSize=${this.props.pageSize}`);
     const data = await response.json();
     this.setState({
       articles: data.articles,
       page: prevPage
     });
-  }
+  };
+
 
   render() {
     return (
       <div className="container my-3">
-        <h1>News Monkey - Top Headlines</h1>
+        <h1 className="text-center my-4 fw-bold">News Monkey - Top Headlines</h1>
         <div className="row my-4 d-flex justify-content-center">
           {this.state.articles.map((element) => {
             return (
@@ -58,8 +60,8 @@ export class News extends Component {
           })}
         </div>
         <div className="d-flex flex-row justify-content-between my-4">
-          <button disabled = {this.state.page <= 1} onClick={this.handlePrevClick} type="button" class="btn btn-dark">&larr; Previous</button>
-          <button disabled={Math.ceil(this.state.articles.length / 23) < this.state.page} type="button" onClick={this.handleNextClick} class="btn btn-dark">Next &rarr;</button>
+          <button disabled = {this.state.page <= 1} onClick={this.handlePrevClick} type="button" className="btn btn-dark">&larr; Previous</button>
+          <button disabled={Math.ceil(this.state.totalResponse / this.props.pageSize) < this.state.page} type="button" onClick={this.handleNextClick} className="btn btn-dark">Next &rarr;</button>
         </div>
       </div>
     );

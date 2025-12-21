@@ -6,7 +6,7 @@ export class App extends Component {
   render() {
     return (
       <>
-        <News />
+        <News pageSize="8" />
       </>
     );
   }
