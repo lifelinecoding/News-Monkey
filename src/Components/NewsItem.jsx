@@ -11,7 +11,7 @@ export class NewsItem extends Component {
         <div className="card-body d-flex flex-column  justify-content-between ">
           <h5 className="card-title overflow-hidden">{title}</h5>
           <p className="card-text overflow-hidden">{description}</p>
-          <a href={url} className="btn btn-primary" style={{width : "45%", height: "40px", alignSelf: "flex-start"}}>
+          <a href={url} target="_blank" rel="noreferrer" className="btn btn-dark" style={{width : "45%", height: "40px", alignSelf: "flex-start"}}>
             Read More
           </a>
         </div>

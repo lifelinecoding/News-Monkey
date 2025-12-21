@@ -8,7 +8,7 @@ export class News extends Component {
     this.state = {
       articles: [],
       loading: false,
-      api_key: "https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=1&pageSize=20",
+      api_key: "https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=1&pageSize=23",
       page: 1,
     };
   }
@@ -17,6 +17,26 @@ export class News extends Component {
     const response = await fetch(this.state.api_key);
     const data = await response.json();
     this.setState({ articles: data.articles });
+  }
+
+  handleNextClick = async() => {
+    const nextPage = this.state.page + 1;
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${nextPage}&pageSize=23`);
+    const data = await response.json();
+    this.setState({
+      articles: data.articles,
+      page: nextPage
+    });
+  }
+
+  handlePrevClick = async() => {
+    const prevPage = this.state.page - 1;
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${prevPage}&pageSize=23`);
+    const data = await response.json();
+    this.setState({
+      articles: data.articles,
+      page: prevPage
+    });
   }
 
   render() {
@@ -37,20 +57,12 @@ export class News extends Component {
             );
           })}
         </div>
+        <div className="d-flex flex-row justify-content-between my-4">
+          <button disabled = {this.state.page <= 1} onClick={this.handlePrevClick} type="button" class="btn btn-dark">&larr; Previous</button>
+          <button disabled={Math.ceil(this.state.articles.length / 23) < this.state.page} type="button" onClick={this.handleNextClick} class="btn btn-dark">Next &rarr;</button>
+        </div>
       </div>
     );
-
-    // <div className="container my-3">
-    //   <h1>News Monkey - Top Headlines</h1>
-    //   <div className="row my-4 d-flex justify-content-center">
-    //     <div className="col-md-3 my-2">
-    //       <NewsItem
-    //         title="My first news"
-    //         description="This is a description of my first news item."
-    //       />
-    //     </div>
-    //   </div>
-    // </div>
   }
 }
 
