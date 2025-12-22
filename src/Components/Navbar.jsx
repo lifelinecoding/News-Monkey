@@ -38,37 +38,37 @@ export class Navbar extends Component {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
+                <Link className="nav-link text-light" to="/general">
                   General
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
-                  Technology  
+                <Link className="nav-link text-light" to="/technology">
+                  Technology
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
+                <Link className="nav-link text-light" to="/sports">
                   Sports
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
+                <Link className="nav-link text-light" to="/business">
                   Business
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
+                <Link className="nav-link text-light" to="/entertainment">
                   Entertainment
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
+                <Link className="nav-link text-light" to="/health">
                   Health
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-light" to="/about">
+                <Link className="nav-link text-light" to="/science">
                   Science
                 </Link>
               </li>

@@ -21,7 +21,7 @@ export class News extends Component {
     this.state = {
       articles: [],
       loading: true,
-      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=1&pageSize=${this.props.pageSize}`,
+      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=1&pageSize=${this.props.pageSize}`,
       page: 1,
       totalResponse: 0
     };
@@ -37,7 +37,7 @@ export class News extends Component {
   handleNextClick = async() => {
     this.setState({loading: true});
     const nextPage = this.state.page + 1;
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${nextPage}&pageSize=${this.props.pageSize}`);
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${nextPage}&pageSize=${this.props.pageSize}`);
     const data = await response.json();
     this.setState({
       articles: data.articles,
@@ -49,7 +49,7 @@ export class News extends Component {
   handlePrevClick = async() => {
     this.setState({loading: true});
     const prevPage = this.state.page - 1;
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${prevPage}&pageSize=${this.props.pageSize}`);
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${prevPage}&pageSize=${this.props.pageSize}`);
     const data = await response.json();
     this.setState({
       articles: data.articles,
@@ -73,6 +73,9 @@ export class News extends Component {
                   description={element.description}
                   url={element.url}
                   urlToImage={element.urlToImage}
+                  author={element.author}
+                  time={element.publishedAt}
+                  source={element.source.name}
                 />
               </div>
             );
