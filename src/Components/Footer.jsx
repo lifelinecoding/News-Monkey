@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export class Footer extends Component {
   render() {
@@ -20,15 +21,15 @@ export class Footer extends Component {
             <div className="col-md-3 mt-3 mt-md-0">
               <h6 className="mb-3 fw-bold">Quick Links</h6>
               <ul className="list-unstyled">
-                <li>Home</li>
-                <li>Top Headlines</li>
-                <li>Technology</li>
-                <li>Sports</li>
-                <li>Business</li>
-                <li>Entertainment</li>
-                <li>General</li>
-                <li>Health</li>
-                <li>Science</li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/">Home</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/">Top Headlines</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/technology">Technology</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/sports">Sports</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/business">Business</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/entertainment">Entertainment</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/general">General</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/health">Health</Link></li>
+                <li><Link style={{color: "white",textDecoration: "none"}} to="/science">Science</Link></li>
               </ul>
             </div>
 
