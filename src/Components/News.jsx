@@ -56,7 +56,7 @@ export class News extends Component {
   render() {
     return (
       <div className="container my-3">
-        <h1 className="text-center my-4 fw-bold">
+        <h1 className={"text-center my-4 fw-bold" + (this.props.mode === "dark" ? " text-light" : " text-dark")}>
           News Monkey - Top Headlines
         </h1>
         {this.state.loading && <Spinner />}
@@ -73,6 +73,7 @@ export class News extends Component {
                     author={element.author}
                     time={element.publishedAt}
                     source={element.source.name}
+                    mode={this.props.mode}
                   />
                 </div>
               );
@@ -84,7 +85,7 @@ export class News extends Component {
             disabled={this.state.page <= 1}
             onClick={this.handlePrevClick}
             type="button"
-            className="btn btn-dark"
+            className={`${this.props.mode === "dark" ? "btn btn-success fw-bold" : "btn btn-danger fw-bold"}`}
           >
             &larr; Previous
           </button>
@@ -95,7 +96,7 @@ export class News extends Component {
             }
             type="button"
             onClick={this.handleNextClick}
-            className="btn btn-dark"
+            className={`${this.props.mode === "dark" ? "btn btn-success fw-bold" : "btn btn-danger fw-bold"}`}
           >
             Next &rarr;
           </button>

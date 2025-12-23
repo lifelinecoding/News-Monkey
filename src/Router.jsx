@@ -5,6 +5,7 @@ import About from "./Components/About";
 import News from "./Components/News";
 // import News from "./Components/News";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

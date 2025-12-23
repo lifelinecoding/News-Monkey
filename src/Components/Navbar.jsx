@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import ThemeContext from "../Context/ThemeContext";
 
 export class Navbar extends Component {
+  static contextType = ThemeContext;
   render() {
-    let { title } = this.props;
+    let { title,} = this.props;
+    const { mode, toggleMode } = this.context;
     return (
-      <nav className="navbar navbar-expand-lg bg-dark">
+      <nav className={"navbar navbar-expand-lg " + (mode === "dark" ? "bg-dark" : "bg-secondary")}>
         <div className="container-fluid">
           <Link className="navbar-brand text-light fw-bold" to="/">
             {title}
@@ -73,6 +76,22 @@ export class Navbar extends Component {
                 </Link>
               </li>
             </ul>
+          </div>
+          <div class="form-check form-switch">
+            <input
+              className="form-check-input mx-3"
+              type="checkbox"
+              role="switch"
+              id="switchCheckChecked"
+              onClick={toggleMode}
+              style={{
+                height: "20px",
+                width: "40px",
+                }}
+            />
+            <label className={`form-check-label ${"text-light"}`} htmlFor="switchCheckChecked">
+              {mode === "light" ? "Enable Dark Mode" : "Enable Light Mode"}
+            </label>
           </div>
         </div>
       </nav>

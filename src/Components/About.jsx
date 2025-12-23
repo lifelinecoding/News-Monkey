@@ -1,16 +1,19 @@
 import React, { Component } from "react";
 import "./About.css";
+import ThemeContext from "../Context/ThemeContext";
 
 export class About extends Component {
+  static contextType = ThemeContext;
   render() {
+    const { mode } = this.context;
     return (
       <div className="container my-5 about-page">
-        <h1 className="text-center mb-5 heading-animate">
+        <h1 className={"text-center mb-5 heading-animate" + (mode === "dark" ? " text-light" : " text-dark")}>
           About News Monkey 📰
         </h1>
 
         {/* About Application */}
-        <section className="about-section fade-in">
+        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
           <h3>What is News Monkey?</h3>
           <p>
             <strong>News Monkey</strong> is a news reading application designed
@@ -31,7 +34,7 @@ export class About extends Component {
         </section>
 
         {/* Services */}
-        <section className="about-section slide-in">
+        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
           <h3>Our Services</h3>
           <ul className="service-list">
             <li>📰 Access to top headlines from trusted sources</li>
@@ -43,7 +46,7 @@ export class About extends Component {
         </section>
 
         {/* Developer Info */}
-        <section className="about-section fade-in">
+        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
           <h3>About the Developer</h3>
           <p>
             News Monkey is developed by <strong>Aditya Patel</strong>, a passionate
@@ -58,7 +61,7 @@ export class About extends Component {
         </section>
 
         {/* Contact */}
-        <section className="about-section slide-in">
+        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
           <h3>Contact</h3>
           <p>
             If you have any questions, suggestions, or feedback related to
@@ -81,7 +84,7 @@ export class About extends Component {
         </section>
 
         {/* Feedback Form */}
-        <section className="about-section fade-in">
+        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : " text-dark")}>
           <h3>Feedback</h3>
           <p>
             Your feedback helps improve News Monkey. Share your experience or
@@ -111,8 +114,8 @@ export class About extends Component {
           </form>
         </section>
 
-        <p className="text-center mt-5 text-muted">
-          <strong>Thank you for using News Monkey!</strong> 🙌
+        <p className={"text-center mt-5 fw-bold " + (mode === "dark" ? "text-light" : "text-dark")}>
+          Thank you for using News Monkey! 🙌
         </p>
       </div>
     );
