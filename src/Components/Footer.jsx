@@ -46,7 +46,7 @@ export class Footer extends Component {
 
           <div className="text-center">
             <small>
-              © {new Date().getFullYear()} News Monkey. All rights reserved.
+              &copy; {new Date().getFullYear()} News Monkey. All rights reserved.
             </small>
           </div>
         </div>

@@ -50,7 +50,7 @@ export class NewsItem extends Component {
             href={url}
             target="_blank"
             rel="noreferrer"
-            className="btn btn-dark"
+            className={`${mode === "dark" ? "btn btn-success" : "btn btn-danger"}`}
             style={{ width: "45%", height: "40px", alignSelf: "flex-start" }}
           >
             Read More
