@@ -1,15 +1,17 @@
 import "./App.css";
 import React, { Component } from "react";
 import News from "./Components/News";
-import ThemeContext from "./Context/ThemeContext";
+
+
 
 export class App extends Component {
-  static contextType = ThemeContext;
+
+apiKey = process.env.REACT_APP_API_KEY;
+
   render() {
-    const { mode } = this.context;
     return (
       <>
-        <News pageSize="8" category="general" mode={mode} />
+        <News pageSize="8" category="general" apiKey= {this.apiKey} />
       </>
     );
   }

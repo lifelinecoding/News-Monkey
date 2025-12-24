@@ -2,16 +2,19 @@ import React, { Component } from "react";
 import NewsItem from "./NewsItem";
 import Spinner from "./Spinner";
 import PropTypes from "prop-types";
+import ThemeContext from "../Context/ThemeContext";
 
 export class News extends Component {
+  static contextType = ThemeContext;
+
   static defaultProps = {
     country: "us",
     pageSize: 8,
   };
 
   static propTypes = {
-    country: PropTypes.string,
-    pageSize: PropTypes.number,
+    country: PropTypes.string.isRequired,
+    pageSize: PropTypes.number.isRequired,
   };
 
   constructor(props) {
@@ -19,7 +22,7 @@ export class News extends Component {
     this.state = {
       articles: [],
       loading: true,
-      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=1&pageSize=${this.props.pageSize}`,
+      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`,
       page: 1,
       totalResponse: 0,
     };
@@ -31,12 +34,16 @@ export class News extends Component {
 
   UpdateNews = async () => {
     this.setState({
-      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=d3cb4fbd575b4f0baf6d4b38922ec0ce&page=${this.state.page}&pageSize=${this.props.pageSize}`,
+      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`,
       loading: true,
     });
     const response = await fetch(this.state.api_key);
     const data = await response.json();
-    this.setState({ articles: data.articles, loading: false, totalResponse: data.totalResults });
+    this.setState({
+      articles: data.articles,
+      loading: false,
+      totalResponse: data.totalResults,
+    });
   };
 
   handleNextClick = () => {
@@ -53,11 +60,25 @@ export class News extends Component {
     this.UpdateNews();
   };
 
+  Capitalize = (message) => {
+    return message.charAt(0).toUpperCase() + message.slice(1);
+  };
+
   render() {
+    const { mode } = this.context;
     return (
       <div className="container my-3">
-        <h1 className={"text-center my-4 fw-bold" + (this.props.mode === "dark" ? " text-light" : " text-dark")}>
-          News Monkey - Top Headlines
+        <h1
+          className={
+            "text-center my-4 fw-bold" +
+            (mode === "dark" ? " text-light" : " text-dark")
+          }
+        >
+          {"News Monkey " +
+            (this.props.category
+              ? ` - ${this.Capitalize(this.props.category)}`
+              : "") +
+            " Top headlines"}
         </h1>
         {this.state.loading && <Spinner />}
         {!this.state.loading && (
@@ -73,7 +94,7 @@ export class News extends Component {
                     author={element.author}
                     time={element.publishedAt}
                     source={element.source.name}
-                    mode={this.props.mode}
+                    mode={mode}
                   />
                 </div>
               );
@@ -85,7 +106,11 @@ export class News extends Component {
             disabled={this.state.page <= 1}
             onClick={this.handlePrevClick}
             type="button"
-            className={`${this.props.mode === "dark" ? "btn btn-success fw-bold" : "btn btn-danger fw-bold"}`}
+            className={`${
+              mode === "dark"
+                ? "btn btn-success fw-bold"
+                : "btn btn-danger fw-bold"
+            }`}
           >
             &larr; Previous
           </button>
@@ -96,7 +121,11 @@ export class News extends Component {
             }
             type="button"
             onClick={this.handleNextClick}
-            className={`${this.props.mode === "dark" ? "btn btn-success fw-bold" : "btn btn-danger fw-bold"}`}
+            className={`${
+              mode === "dark"
+                ? "btn btn-success fw-bold"
+                : "btn btn-danger fw-bold"
+            }`}
           >
             Next &rarr;
           </button>

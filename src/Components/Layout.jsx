@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import ThemeContext from "../Context/ThemeContext";
 
 export class Layout extends Component {
+
   constructor() {
     super();
     this.state = {
