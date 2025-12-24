@@ -26,6 +26,8 @@ export class News extends Component {
       page: 1,
       totalResponse: 0,
     };
+    //eslint-disable-next-line
+    document.title = "News Monkey - " + `${this.Capitalize(this.props.category)}` 
   }
 
   componentDidMount = () => {
@@ -34,7 +36,6 @@ export class News extends Component {
 
   UpdateNews = async () => {
     this.setState({
-      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page}&pageSize=${this.props.pageSize}`,
       loading: true,
     });
     const response = await fetch(this.state.api_key);
@@ -48,6 +49,7 @@ export class News extends Component {
 
   handleNextClick = () => {
     this.setState({
+      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page + 1}&pageSize=${this.props.pageSize}`,
       page: this.state.page + 1,
     });
     this.UpdateNews();
@@ -55,6 +57,7 @@ export class News extends Component {
 
   handlePrevClick = () => {
     this.setState({
+      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${this.state.page - 1}&pageSize=${this.props.pageSize}`,
       page: this.state.page - 1,
     });
     this.UpdateNews();
