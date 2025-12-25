@@ -108,7 +108,7 @@ export class About extends Component {
               placeholder="Your Feedback"
             ></textarea>
 
-            <button type="submit" className="btn btn-dark w-100">
+            <button type="submit" className={"btn w-100" + (mode === 'dark' ? " bg-success text-light" : " btn-danger")}>
               Submit Feedback
             </button>
           </form>
