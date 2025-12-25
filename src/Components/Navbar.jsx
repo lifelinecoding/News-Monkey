@@ -8,7 +8,7 @@ export class Navbar extends Component {
     let { title,} = this.props;
     const { mode, toggleMode } = this.context;
     return (
-      <nav className={"navbar navbar-expand-lg " + (mode === "dark" ? "bg-dark" : "bg-secondary")}>
+      <nav className={"navbar navbar-expand-lg fixed-top " + (mode === "dark" ? "bg-dark" : "bg-secondary")}>
         <div className="container-fluid">
           <Link className="navbar-brand text-light fw-bold" to="/">
             {title}
