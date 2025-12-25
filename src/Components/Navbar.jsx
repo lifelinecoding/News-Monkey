@@ -88,6 +88,7 @@ export class Navbar extends Component {
                 height: "20px",
                 width: "40px",
                 }}
+                checked = {mode === 'dark'? true:false}
             />
             <label className={`form-check-label ${"text-light"}`} htmlFor="switchCheckChecked">
               {mode === "light" ? "Enable Dark Mode" : "Enable Light Mode"}

@@ -13,7 +13,7 @@ export class About extends Component {
         </h1>
 
         {/* About Application */}
-        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
+        <section className="about-section fade-in" style={{backgroundColor: mode === "dark"? "#330530" : "white", color: mode === "dark"? "white" : "black", border: mode === "dark"? "2px solid green" : "2px solid red", padding: "15px", borderRadius: "10px", marginBottom: "30px"}}>
           <h3>What is News Monkey?</h3>
           <p>
             <strong>News Monkey</strong> is a news reading application designed
@@ -34,7 +34,7 @@ export class About extends Component {
         </section>
 
         {/* Services */}
-        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
+        <section className="about-section fade-in" style={{backgroundColor: mode === "dark"? "#330530" : "white", color: mode === "dark"? "white" : "black", border: mode === "dark"? "2px solid green" : "2px solid red", padding: "15px", borderRadius: "10px", marginBottom: "30px"}}>
           <h3>Our Services</h3>
           <ul className="service-list">
             <li>📰 Access to top headlines from trusted sources</li>
@@ -46,7 +46,7 @@ export class About extends Component {
         </section>
 
         {/* Developer Info */}
-        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
+        <section className="about-section fade-in" style={{backgroundColor: mode === "dark"? "#330530" : "white", color: mode === "dark"? "white" : "black", border: mode === "dark"? "2px solid green" : "2px solid red", padding: "15px", borderRadius: "10px", marginBottom: "30px"}}>
           <h3>About the Developer</h3>
           <p>
             News Monkey is developed by <strong>Aditya Patel</strong>, a passionate
@@ -61,8 +61,8 @@ export class About extends Component {
         </section>
 
         {/* Contact */}
-        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : "  text-dark")}>
-          <h3>Contact</h3>
+          <section className="about-section fade-in" style={{backgroundColor: mode === "dark"? "#330530" : "white", color: mode === "dark"? "white" : "black", border: mode === "dark"? "2px solid green" : "2px solid red", padding: "15px", borderRadius: "10px", marginBottom: "30px"}}>
+            <h3>Contact</h3>
           <p>
             If you have any questions, suggestions, or feedback related to
             News Monkey, feel free to connect.
@@ -84,7 +84,7 @@ export class About extends Component {
         </section>
 
         {/* Feedback Form */}
-        <section className={"about-section fade-in" + (mode === "dark" ? " bg-success text-light" : " text-dark")}>
+        <section className="about-section fade-in" style={{backgroundColor: mode === "dark"? "#330530" : "white", color: mode === "dark"? "white" : "black", border: mode === "dark"? "2px solid green" : "2px solid red", padding: "15px", borderRadius: "10px", marginBottom: "30px"}}>
           <h3>Feedback</h3>
           <p>
             Your feedback helps improve News Monkey. Share your experience or
