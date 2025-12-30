@@ -22,19 +22,28 @@ export class News extends Component {
     super(props);
     this.state = {
       articles: [],
-      loading: true,
-      api_key: `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`,
       page: 1,
-      totalResponse: 0,
+      hasMore: true,
     };
+
     document.title =
       //eslint-disable-next-line
       "News Monkey - " + `${this.Capitalize(this.props.category)}`;
   }
 
-  // componentDidMount = () => {
-  //   this.UpdateNews();
-  // };
+  componentDidMount = async () => {
+    const response = await fetch(
+      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`
+    );
+
+    const data = await response.json();
+
+    this.setState({
+      articles: data.articles,
+      page: 1,
+      hasMore: data.articles.length > 0,
+    });
+  };
 
   // UpdateNews = async () => {
   //   this.setState({
@@ -78,21 +87,24 @@ export class News extends Component {
   };
 
   fetchData = async () => {
-    this.setState({ loading: false });
+    const nextPage = this.state.page + 1;
+
     const response = await fetch(
-      `https://newsapi.org/v2/top-headlines?country=${
-        this.props.country
-      }&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${
-        this.state.page + 1
-      }&pageSize=${this.props.pageSize}`
+      `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${nextPage}&pageSize=${this.props.pageSize}`
     );
+
     const data = await response.json();
-    
-    this.setState({
-      page: this.state.page + 1,
-      articles: this.state.articles.concat(data.articles),
-      totalResponse: data.totalResults,
-    });
+
+    // STOP infinite scroll when no more articles
+    if (data.articles.length === 0) {
+      this.setState({ hasMore: false });
+      return;
+    }
+
+    this.setState((prevState) => ({
+      page: nextPage,
+      articles: prevState.articles.concat(data.articles),
+    }));
   };
 
   render() {
@@ -112,17 +124,15 @@ export class News extends Component {
             " Top headlines"}
         </h1>
 
-        {this.state.loading && <Spinner />}
+        {/* {this.state.loading && <Spinner />} */}
 
         <InfiniteScroll
-          dataLength={this.state.articles.length} //This is important field to render the next data
+          dataLength={this.state.articles.length}
           next={this.fetchData}
-          // hasMore={this.state.totalResponse/this.props.pageSize !== this.state.page}
-          hasMore={this.state.articles.length !== this.state.totalResponse}
+          hasMore={this.state.hasMore}
           loader={<Spinner />}
-          // children= {this.state.articles}
           endMessage={
-           !this.state.loading && <p style={{ textAlign: "center" }}>
+            <p style={{ textAlign: "center" }}>
               <b>Yay! You have seen it all</b>
             </p>
           }
