@@ -54,7 +54,6 @@ src/
 │
 ├── Context/
 │ ├── ThemeContext.js
-│ └── LoadingContext.js
 │
 ├── Router.jsx
 ├── App.jsx
