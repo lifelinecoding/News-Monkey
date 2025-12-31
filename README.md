@@ -1,70 +1,235 @@
-# Getting Started with Create React App
+# 📰 News Monkey
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**News Monkey** is a modern, responsive news reading web application built using **React**.  
+It fetches real-time top headlines from **NewsAPI** and provides a smooth, distraction-free reading experience with infinite scrolling, category-based navigation, dark/light mode, and a top loading progress bar.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🚀 Features
 
-### `npm start`
+- 🗞️ Latest top headlines from trusted sources  
+- 🌍 Category-based news:
+  - General
+  - Business
+  - Sports
+  - Technology
+  - Health
+  - Science
+  - Entertainment
+- ♾️ Infinite scroll for seamless news loading
+- 🌗 Dark / Light mode toggle
+- 📊 Top loading progress bar
+- ⚡ Fast and responsive UI
+- 📱 Fully responsive design
+- 🧠 Global state management using React Context API
+- 🔐 Secure API key handling using environment variables
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Tech Stack
 
-### `npm test`
+- **Frontend:** React (Class Components)
+- **Routing:** React Router v6 (`createBrowserRouter`)
+- **State Management:** React Context API
+- **Styling:** Bootstrap 5 + Custom CSS
+- **API:** NewsAPI.org
+- **Infinite Scroll:** react-infinite-scroll-component
+- **Loader:** react-top-loading-bar
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 📂 Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+src/
+│
+├── Components/
+│ ├── Navbar.jsx
+│ ├── News.jsx
+│ ├── NewsItem.jsx
+│ ├── Footer.jsx
+│ ├── About.jsx
+│ ├── Layout.jsx
+│ ├── Spinner.jsx
+│ └── TopLoader.jsx
+│
+├── Context/
+│ ├── ThemeContext.js
+│ └── LoadingContext.js
+│
+├── Router.jsx
+├── App.jsx
+└── index.js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## ✅ Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Make sure you have the following installed:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Node.js** (v14 or higher)
+- **npm** or **yarn**
+- A **NewsAPI account**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Create a free API key from:  
+👉 https://newsapi.org/register
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## ⚙️ Installation & Setup
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1️⃣ Clone the Repository
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/your-username/news-monkey.git
+cd news-monkey
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+2️⃣ Install Dependencies
 
-### Analyzing the Bundle Size
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+or
 
-### Making a Progressive Web App
+yarn install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+3️⃣ Configure Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Create a file named .env.local in the root directory and add:
 
-### Deployment
+REACT_APP_API_KEY=your_news_api_key_here
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+⚠️ Important Notes:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Environment variables must start with REACT_APP_
+
+Restart the server after creating or modifying .env.local
+
+.env.local should NOT be pushed to GitHub
+
+---
+
+4️⃣ Start the Development Server
+
+npm start
+
+or
+
+yarn start
+
+
+The application will run on:
+
+http://localhost:3000
+
+---
+
+🧭 How to Use
+
+Use the navbar to navigate between news categories
+
+Scroll down to load more articles automatically
+
+Toggle dark/light mode from the navbar
+
+Click on any article to read the full news on the source website
+
+Visit the About page to learn more about the app and the developer
+
+---
+
+🧭 How to Use
+
+Use the navbar to navigate between news categories
+
+Scroll down to load more articles automatically
+
+Toggle dark/light mode from the navbar
+
+Click on any article to read the full news on the source website
+
+Visit the About page to learn more about the app and the developer
+
+---
+
+🧠 Key Concepts Implemented
+
+React Class Components
+
+React Context API (Theme & Loading state)
+
+Infinite Scroll implementation
+
+Top loading progress bar
+
+Environment variable security
+
+Dynamic routing with React Router
+
+Reusable and modular components
+
+---
+
+👨‍💻 Developer Information
+
+Aditya Patel
+💻 Web Developer | React Learner
+🎯 Passionate about building real-world applications
+
+🔗 LinkedIn: https://www.linkedin.com/in/aditya-patel-6ab7002a1/
+
+---
+
+🤝 Contributing
+
+Contributions are welcome!
+
+Fork the repository
+
+Create a new branch
+
+Make your changes
+
+Submit a pull request
+
+---
+
+⭐ Support
+
+If you like this project:
+
+⭐ Star the repository
+
+🍴 Fork it
+
+📢 Share it with others
+
+---
+
+📜 License
+
+This project is licensed under the MIT License.
+You are free to use, modify, and distribute it.
+
+---
+
+🙌 Acknowledgements
+
+NewsAPI.org for providing news data
+
+React community & open-source contributors
+
+Bootstrap for responsive design
+
+---
+
+🧠 Final Note
+
+News Monkey is built as a learning-focused, real-world React project.
+Feel free to explore, improve, and extend it further 🚀
+
+Thank you for using News Monkey! 📰✨
