@@ -8,6 +8,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 export class News extends Component {
   static contextType = ThemeContext;
 
+  // static contextType = LoadingContext;
+
   static defaultProps = {
     country: "us",
     pageSize: 8,
@@ -32,17 +34,20 @@ export class News extends Component {
   }
 
   componentDidMount = async () => {
+    const { setProgress } = this.context;
+    setProgress(30);
     const response = await fetch(
       `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`
     );
-
+    setProgress(50);
     const data = await response.json();
-
+    setProgress(80);
     this.setState({
       articles: data.articles,
       page: 1,
       hasMore: data.articles.length > 0,
     });
+    setProgress(100);
   };
 
   // UpdateNews = async () => {
@@ -87,17 +92,25 @@ export class News extends Component {
   };
 
   fetchData = async () => {
+
+    const { setProgress } = this.context;
+
     const nextPage = this.state.page + 1;
+
+    setProgress(30);
 
     const response = await fetch(
       `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=${nextPage}&pageSize=${this.props.pageSize}`
     );
-
+    setProgress(50);
     const data = await response.json();
+
+    setProgress(80);
 
     // STOP infinite scroll when no more articles
     if (data.articles.length === 0) {
       this.setState({ hasMore: false });
+      setProgress(100);
       return;
     }
 
@@ -105,6 +118,7 @@ export class News extends Component {
       page: nextPage,
       articles: prevState.articles.concat(data.articles),
     }));
+    this.context.setProgress(100);
   };
 
   render() {
@@ -132,7 +146,7 @@ export class News extends Component {
           hasMore={this.state.hasMore}
           loader={<Spinner />}
           endMessage={
-            <p style={{ textAlign: "center" }}>
+            <p style={{ textAlign: "center", color: mode === "dark" ? "white" : "black" }}>
               <b>Yay! You have seen it all</b>
             </p>
           }

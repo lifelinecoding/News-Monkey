@@ -4,8 +4,8 @@ import App from "./App";
 import About from "./Components/About";
 import News from "./Components/News";
 
-const apiKey = process.env.REACT_APP_API_KEY;
 
+const apiKey = process.env.REACT_APP_API_KEY;
 
 const router = createBrowserRouter([
   {
