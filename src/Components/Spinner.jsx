@@ -1,13 +1,17 @@
-import React, { Component } from 'react'
-import Loader from '../Loader.gif';
+import React, { Component } from "react";
+import ThemeContext from "../Context/ThemeContext";
 
 export class Spinner extends Component {
+  static contextType = ThemeContext;
   render() {
+    const { mode } = this.context;
     return (
-      <div className='d-flex flex-row justify-content-center align-items-center' style={{height: "8rem"}}>
-        <img className="d-block mx-auto" style={{height: "80px", width: "80px"}} src={Loader} alt="Loading" />
+      <div className="d-flex justify-content-center my-3">
+      <div className={`spinner-border text-${mode === "dark" ? "success" : "danger"}`} role="status">
+        <span className="visually-hidden">Loading...</span>
       </div>
-    )
+    </div>
+    );
   }
 }
 

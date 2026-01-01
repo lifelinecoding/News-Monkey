@@ -6,6 +6,7 @@ export class About extends Component {
   static contextType = ThemeContext;
   render() {
     const { mode } = this.context;
+    document.title = `News Monkey - About Us`;
     return (
       <div className="container my-5 about-page">
         <h1 className={"text-center mb-5 heading-animate" + (mode === "dark" ? " text-light" : " text-dark")}>

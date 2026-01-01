@@ -141,6 +141,7 @@ export class News extends Component {
         {/* {this.state.loading && <Spinner />} */}
 
         <InfiniteScroll
+          style={{ height: "auto", overflow: "hidden" }}
           dataLength={this.state.articles.length}
           next={this.fetchData}
           hasMore={this.state.hasMore}
