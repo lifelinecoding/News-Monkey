@@ -7,7 +7,7 @@ It fetches real-time top headlines from **NewsAPI** and provides a smooth, distr
 
 ## 🚀 Features
 
-- 🗞️ Latest top headlines from trusted sources  
+- 🗞️ Latest top headlines from trusted sources
 - 🌍 Category-based news:
   - General
   - Business
@@ -40,6 +40,7 @@ It fetches real-time top headlines from **NewsAPI** and provides a smooth, distr
 
 ## 📂 Project Structure
 
+```
 src/
 │
 ├── Components/
@@ -59,6 +60,7 @@ src/
 ├── App.jsx
 └── index.js
 
+```
 
 ---
 
@@ -77,103 +79,81 @@ Create a free API key from:
 
 ## ⚙️ Installation & Setup
 
-1️⃣ Clone the Repository
+### 1️⃣ Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/news-monkey.git
 cd news-monkey
 
----
+```
 
-2️⃣ Install Dependencies
+### 2️⃣ Install Dependencies
 
+```
 npm install
+```
 
 or
 
+```
 yarn install
+```
 
 ---
 
-3️⃣ Configure Environment Variables
+### 3️⃣ Configure Environment Variables
 
-Create a file named .env.local in the root directory and add:
+#### Create a file named .env.local in the root directory and add:
 
-REACT_APP_API_KEY=your_news_api_key_here
+    REACT_APP_API_KEY=your_news_api_key_here
 
+### ⚠️ Important Notes:
 
-⚠️ Important Notes:
-
-Environment variables must start with REACT_APP_
-
-Restart the server after creating or modifying .env.local
-
-.env.local should NOT be pushed to GitHub
+- Environment variables must start with REACT*APP*
+- Restart the server after creating or modifying .env.local
+- .env.local should NOT be pushed to GitHub
 
 ---
 
-4️⃣ Start the Development Server
+### 4️⃣ Start the Development Server
 
+```
 npm start
+```
 
 or
 
+```
 yarn start
+```
 
-
-The application will run on:
-
-http://localhost:3000
+The application will run on: http://localhost:3000
 
 ---
 
-🧭 How to Use
+## 🧭 How to Use
 
-Use the navbar to navigate between news categories
-
-Scroll down to load more articles automatically
-
-Toggle dark/light mode from the navbar
-
-Click on any article to read the full news on the source website
-
-Visit the About page to learn more about the app and the developer
+- Use the navbar to navigate between news categories
+- Scroll down to load more articles automatically
+- Toggle dark/light mode from the navbar
+- Click on any article to read the full news on the source website
+- Visit the About page to learn more about the app and the developer
 
 ---
 
-🧭 How to Use
+## 🧠 Key Concepts Implemented
 
-Use the navbar to navigate between news categories
-
-Scroll down to load more articles automatically
-
-Toggle dark/light mode from the navbar
-
-Click on any article to read the full news on the source website
-
-Visit the About page to learn more about the app and the developer
+- React Class Components
+- React Context API (Theme & Loading state)
+- Infinite Scroll implementation
+- Top loading progress bar
+- Environment variable security
+- Dynamic routing with React Router
+- Reusable and modular components
 
 ---
 
-🧠 Key Concepts Implemented
-
-React Class Components
-
-React Context API (Theme & Loading state)
-
-Infinite Scroll implementation
-
-Top loading progress bar
-
-Environment variable security
-
-Dynamic routing with React Router
-
-Reusable and modular components
-
----
-
-👨‍💻 Developer Information
+## 👨‍💻 Developer Information
 
 Aditya Patel
 💻 Web Developer | React Learner
@@ -183,33 +163,27 @@ Aditya Patel
 
 ---
 
-🤝 Contributing
+## 🤝 Contributing
 
-Contributions are welcome!
-
-Fork the repository
-
-Create a new branch
-
-Make your changes
-
-Submit a pull request
+- Contributions are welcome!
+- Fork the repository
+- Create a new branch
+- Make your changes
+- Submit a pull request
 
 ---
 
-⭐ Support
+## ⭐ Support
 
 If you like this project:
 
-⭐ Star the repository
-
-🍴 Fork it
-
-📢 Share it with others
+- ⭐ Star the repository
+- 🍴 Fork it
+- 📢 Share it with others
 
 ---
 
-📜 License
+## 📜 License
 
 This project is licensed under the MIT License.
 You are free to use, modify, and distribute it.
@@ -218,15 +192,13 @@ You are free to use, modify, and distribute it.
 
 🙌 Acknowledgements
 
-NewsAPI.org for providing news data
-
-React community & open-source contributors
-
-Bootstrap for responsive design
+- NewsAPI.org for providing news data
+- React community & open-source contributors
+- Bootstrap for responsive design
 
 ---
 
-🧠 Final Note
+## 🧠 Final Note
 
 News Monkey is built as a learning-focused, real-world React project.
 Feel free to explore, improve, and extend it further 🚀
